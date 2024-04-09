@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax</title>
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body{
+            min-height: 100vh;
+        }
+
+        body::-webkit-scrollbar{
+            display: none;
+        }
+
+        nav {
+            width: 100%;
+            display: inline-flex;
+            padding: 10px;
+            gap: 25px;
+            font-weight: 700;
+            font-size: 30px;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.111);
+            justify-content: start;
+           
+        }
+
+        nav a{
+            color: #359381;
+            text-decoration: none
+        }
+
+        nav a:hover{
+            background-color: #3f9989d1;
+            border-radius: 5px;
+            color: white;
+            transition: all .4s ease;
+        }
+
+        .para{
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+
+        }
+
+        .para h2{
+           position: absolute;
+            color: white;
+            font-size: 10rem;
+        }
+
+        .para img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+
+        .text{
+            position: relative;
+            background-color: #003329;
+            padding: 100px;
+        }
+
+        .text p{
+            color: white;
+            line-height: 35px;
+            font-size: 20px;
+            text-align: justify;
+        }
+
+        @media (max-width: 700px){
+            nav{
+                position: sticky;
+                top: 0;
+            }
+            nav a{
+                font-size: 20px;
+                margin-left: -10px;
+            }
+            .para{
+                height: 500px;
+            }
+
+            .para img{
+                height: 500px;
+            }
+
+            .para h2{
+                font-size: 4rem;
+            }
+
+            .text{
+                margin-top: 0px;
+                padding: 10px;
+            }
+
+            .text p{
+                line-height: 20px;
+                font-size: 15px;
+                width: 100%;
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"></div>
+        <a href="">Home</a>
+        <a href="">Contact</a>
+        <a href="">About</a>
+    </nav>
+
+    <div class="para">
+       
+        <img src="assets/hill1.png" alt="" id="hill1">
+        <img src="assets/hill2.png" alt="" id="hill2">
+        <img src="assets/hill3.png" alt="" id="hill3">
+        <img src="assets/hill4.png" alt="" id="hill4">
+        <img src="assets/hill5.png" alt="" id="hill5">
+        <img src="assets/tree.png" alt="" id="tree">
+        <h2>PARALLAX</h2>
+        <img src="assets/leaf.png" alt="" id="leaf">
+        <img src="assets/plant.png" alt="" id="plant">
+    </div>
+
+    <div class="text">
+        <p>A parallax website is a dynamic and visually engaging type of website design that utilizes a scrolling technique to create a sense of depth and immersion for users. Unlike traditional websites where all elements move in unison as the user scrolls, a parallax website features multiple layers of content that move at different speeds as the user navigates through the site. This creates a captivating 3D effect that enhances the user experience and draws them further into the website's narrative or message.
+
+            At its core, the term "parallax" refers to the apparent displacement or difference in the apparent position of an object when viewed along different lines of sight. In the context of web design, this concept is translated into a dynamic scrolling effect where background images or elements move slower than foreground elements, creating an illusion of depth and dimensionality. This technique is achieved through the use of HTML, CSS, and JavaScript to manipulate the positioning of elements on the webpage based on the user's scroll actions.
+            
+            One of the key advantages of a parallax website is its ability to tell a story or convey information in a visually compelling manner. By breaking up content into multiple layers that move independently, designers can guide users through a narrative or highlight key messages in a more engaging way. This can be particularly effective for websites promoting products or services, as it allows for creative and interactive presentations that capture users' attention and encourage exploration.
+            
+            Furthermore, the immersive nature of parallax scrolling can enhance the overall user experience by making the website more memorable and enjoyable to interact with. By creating a sense of depth and movement, parallax websites can evoke emotions and leave a lasting impression on visitors. This can be especially beneficial for businesses looking to differentiate themselves in a crowded online marketplace and leave a positive impression on potential customers.
+            
+            However, it's important for designers to use parallax scrolling judiciously and with purpose. While it can be a powerful tool for enhancing visual appeal and storytelling, excessive use of parallax effects can also lead to usability issues and detract from the overall user experience. It's crucial to strike a balance between aesthetics and functionality, ensuring that the scrolling effects enhance rather than hinder the website's usability and accessibility.
+            
+            In conclusion, a parallax website offers a visually captivating and immersive experience for users by utilizing dynamic scrolling effects to create depth and dimensionality. By breaking up content into multiple layers that move at different speeds, designers can guide users through a narrative or highlight key messages in a more engaging way. While parallax scrolling can enhance visual appeal and storytelling, it's important to use it judiciously to avoid usability issues and ensure a positive overall user experience.</p>
+    </div>
+
+    <script>
+        let hill1 = document.getElementById('hill1');
+        let hill4 = document.getElementById('hill4');
+        let hill5 = document.getElementById('hill5');
+        let leaf = document.getElementById('leaf');
+        let textH2 = document.querySelector('h2');
+
+        window.addEventListener('scroll', () =>{
+            let value = window.scrollY;
+            textH2.style.marginTop = value * 4.5 + 'px';
+            leaf.style.top = value * -1.6 + 'px';
+            leaf.style.left = value * 1 + 'px';
+            hill4.style.marginLeft = value * -.5 + "px";
+            hill5.style.left = value * 1 + "px";
+        })
+    </script>
+    
+</body>
+</html>
