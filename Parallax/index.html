@@ -12,10 +12,28 @@
         }
         body{
             min-height: 100vh;
+           
         }
 
         body::-webkit-scrollbar{
             display: none;
+        }
+
+        .scrool-watcher{
+            height: 5px;
+            width: 100%;
+            background-color: lime;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+            scale: 0 1;
+            animation: animate linear;
+            transform-origin: left;
+            animation-timeline: scroll();
+        }
+
+        @keyframes animate{
+            to{scale: 1 1;}
         }
 
         nav {
@@ -27,10 +45,14 @@
             font-size: 30px;
             position: fixed;
             top: 0;
-            z-index: 100;
+            z-index: 9;
             background-color: rgba(0, 0, 0, 0.111);
             justify-content: start;
            
+        }
+
+        .nav-new{
+            background-color: black;
         }
 
         nav a{
@@ -53,6 +75,7 @@
             flex-direction: column;
             justify-content: center;
             height: 100vh;
+            overflow: hidden;
 
         }
 
@@ -75,11 +98,16 @@
             padding: 100px;
         }
 
-        .text p{
+        .text .p1{
             color: white;
             line-height: 35px;
             font-size: 20px;
             text-align: justify;
+        }
+        .author{
+            color: black;
+            font-family: verdana;
+            font-weight: 800;
         }
 
         @media (max-width: 700px){
@@ -119,7 +147,7 @@
     </style>
 </head>
 <body>
-
+    <div class="scrool-watcher"></div>
     <nav>
         <div class="logo"></div>
         <a href="">Home</a>
@@ -141,7 +169,7 @@
     </div>
 
     <div class="text">
-        <p>A parallax website is a dynamic and visually engaging type of website design that utilizes a scrolling technique to create a sense of depth and immersion for users. Unlike traditional websites where all elements move in unison as the user scrolls, a parallax website features multiple layers of content that move at different speeds as the user navigates through the site. This creates a captivating 3D effect that enhances the user experience and draws them further into the website's narrative or message.
+        <p class="p1">A parallax website is a dynamic and visually engaging type of website design that utilizes a scrolling technique to create a sense of depth and immersion for users. Unlike traditional websites where all elements move in unison as the user scrolls, a parallax website features multiple layers of content that move at different speeds as the user navigates through the site. This creates a captivating 3D effect that enhances the user experience and draws them further into the website's narrative or message.
 
             At its core, the term "parallax" refers to the apparent displacement or difference in the apparent position of an object when viewed along different lines of sight. In the context of web design, this concept is translated into a dynamic scrolling effect where background images or elements move slower than foreground elements, creating an illusion of depth and dimensionality. This technique is achieved through the use of HTML, CSS, and JavaScript to manipulate the positioning of elements on the webpage based on the user's scroll actions.
             
@@ -153,7 +181,7 @@
             
             In conclusion, a parallax website offers a visually captivating and immersive experience for users by utilizing dynamic scrolling effects to create depth and dimensionality. By breaking up content into multiple layers that move at different speeds, designers can guide users through a narrative or highlight key messages in a more engaging way. While parallax scrolling can enhance visual appeal and storytelling, it's important to use it judiciously to avoid usability issues and ensure a positive overall user experience.</p>
             <br>
-        <p style = "color: black; font-weight: 700;">Owned by: Jade Formentera</p>
+        <p class="author">Owned by: Jade Formentera</p>
     </div>
 
     <script>
@@ -162,6 +190,7 @@
         let hill5 = document.getElementById('hill5');
         let leaf = document.getElementById('leaf');
         let textH2 = document.querySelector('h2');
+        let nav = document.querySelector('nav');
 
         window.addEventListener('scroll', () =>{
             let value = window.scrollY;
@@ -170,6 +199,13 @@
             leaf.style.left = value * 1 + 'px';
             hill4.style.marginLeft = value * -.5 + "px";
             hill5.style.left = value * 1 + "px";
+
+            if(window.scrollY >= 600){
+                nav.classList.add('nav-new');
+                
+            }else{
+                nav.classList.remove('nav-new');
+            }
         })
     </script>
     
